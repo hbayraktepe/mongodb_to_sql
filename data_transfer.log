@@ -1,0 +1,152 @@
+2024-05-02 15:10:15,352:INFO:{"message": "Waiting for suitable server to become available", "selector": "Primary()", "operation": "find", "topologyDescription": "<TopologyDescription id: 663382a77cd261c2eff42ebe, topology_type: Single, servers: [<ServerDescription ('192.168.4.44', 27017) server_type: Unknown, rtt: None>]>", "clientId": {"$oid": "663382a77cd261c2eff42ebe"}, "remainingTimeMS": 30}
+2024-05-02 15:10:32,282:ERROR:An error occurred: (pyodbc.OperationalError) ('08001', '[08001] [Microsoft][ODBC SQL Server Driver][DBNETLIB]SQL Server yok veya eriþim engellendi. (17) (SQLDriverConnect); [08001] [Microsoft][ODBC SQL Server Driver][DBNETLIB]ConnectionOpen (Connect()). (53)')
+(Background on this error at: https://sqlalche.me/e/20/e3q8)
+2024-05-02 15:20:01,557:INFO:{"message": "Waiting for suitable server to become available", "selector": "Primary()", "operation": "find", "topologyDescription": "<TopologyDescription id: 663384f1a922f391b543766d, topology_type: Single, servers: [<ServerDescription ('192.168.4.44', 27017) server_type: Unknown, rtt: None>]>", "clientId": {"$oid": "663384f1a922f391b543766d"}, "remainingTimeMS": 30}
+2024-05-02 15:20:18,401:ERROR:An error occurred:
+Traceback (most recent call last):
+  File "C:\Users\hbayraktepe\PycharmProjects\mongodb_to_sql\venv\lib\site-packages\sqlalchemy\engine\base.py", line 146, in __init__
+    self._dbapi_connection = engine.raw_connection()
+  File "C:\Users\hbayraktepe\PycharmProjects\mongodb_to_sql\venv\lib\site-packages\sqlalchemy\engine\base.py", line 3304, in raw_connection
+    return self.pool.connect()
+  File "C:\Users\hbayraktepe\PycharmProjects\mongodb_to_sql\venv\lib\site-packages\sqlalchemy\pool\base.py", line 449, in connect
+    return _ConnectionFairy._checkout(self)
+  File "C:\Users\hbayraktepe\PycharmProjects\mongodb_to_sql\venv\lib\site-packages\sqlalchemy\pool\base.py", line 1263, in _checkout
+    fairy = _ConnectionRecord.checkout(pool)
+  File "C:\Users\hbayraktepe\PycharmProjects\mongodb_to_sql\venv\lib\site-packages\sqlalchemy\pool\base.py", line 712, in checkout
+    rec = pool._do_get()
+  File "C:\Users\hbayraktepe\PycharmProjects\mongodb_to_sql\venv\lib\site-packages\sqlalchemy\pool\impl.py", line 179, in _do_get
+    with util.safe_reraise():
+  File "C:\Users\hbayraktepe\PycharmProjects\mongodb_to_sql\venv\lib\site-packages\sqlalchemy\util\langhelpers.py", line 146, in __exit__
+    raise exc_value.with_traceback(exc_tb)
+  File "C:\Users\hbayraktepe\PycharmProjects\mongodb_to_sql\venv\lib\site-packages\sqlalchemy\pool\impl.py", line 177, in _do_get
+    return self._create_connection()
+  File "C:\Users\hbayraktepe\PycharmProjects\mongodb_to_sql\venv\lib\site-packages\sqlalchemy\pool\base.py", line 390, in _create_connection
+    return _ConnectionRecord(self)
+  File "C:\Users\hbayraktepe\PycharmProjects\mongodb_to_sql\venv\lib\site-packages\sqlalchemy\pool\base.py", line 674, in __init__
+    self.__connect()
+  File "C:\Users\hbayraktepe\PycharmProjects\mongodb_to_sql\venv\lib\site-packages\sqlalchemy\pool\base.py", line 900, in __connect
+    with util.safe_reraise():
+  File "C:\Users\hbayraktepe\PycharmProjects\mongodb_to_sql\venv\lib\site-packages\sqlalchemy\util\langhelpers.py", line 146, in __exit__
+    raise exc_value.with_traceback(exc_tb)
+  File "C:\Users\hbayraktepe\PycharmProjects\mongodb_to_sql\venv\lib\site-packages\sqlalchemy\pool\base.py", line 896, in __connect
+    self.dbapi_connection = connection = pool._invoke_creator(self)
+  File "C:\Users\hbayraktepe\PycharmProjects\mongodb_to_sql\venv\lib\site-packages\sqlalchemy\engine\create.py", line 643, in connect
+    return dialect.connect(*cargs, **cparams)
+  File "C:\Users\hbayraktepe\PycharmProjects\mongodb_to_sql\venv\lib\site-packages\sqlalchemy\engine\default.py", line 617, in connect
+    return self.loaded_dbapi.connect(*cargs, **cparams)
+pyodbc.OperationalError: ('08001', '[08001] [Microsoft][ODBC SQL Server Driver][DBNETLIB]SQL Server yok veya eriþim engellendi. (17) (SQLDriverConnect); [08001] [Microsoft][ODBC SQL Server Driver][DBNETLIB]ConnectionOpen (Connect()). (53)')
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\hbayraktepe\PycharmProjects\mongodb_to_sql\data_transfer.py", line 19, in transfer_data
+    df.to_sql(name=self.db.sql_table, con=self.sql_engine, if_exists='append', index=False)
+  File "C:\Users\hbayraktepe\PycharmProjects\mongodb_to_sql\venv\lib\site-packages\pandas\util\_decorators.py", line 333, in wrapper
+    return func(*args, **kwargs)
+  File "C:\Users\hbayraktepe\PycharmProjects\mongodb_to_sql\venv\lib\site-packages\pandas\core\generic.py", line 3087, in to_sql
+    return sql.to_sql(
+  File "C:\Users\hbayraktepe\PycharmProjects\mongodb_to_sql\venv\lib\site-packages\pandas\io\sql.py", line 841, in to_sql
+    with pandasSQL_builder(con, schema=schema, need_transaction=True) as pandas_sql:
+  File "C:\Users\hbayraktepe\PycharmProjects\mongodb_to_sql\venv\lib\site-packages\pandas\io\sql.py", line 906, in pandasSQL_builder
+    return SQLDatabase(con, schema, need_transaction)
+  File "C:\Users\hbayraktepe\PycharmProjects\mongodb_to_sql\venv\lib\site-packages\pandas\io\sql.py", line 1636, in __init__
+    con = self.exit_stack.enter_context(con.connect())
+  File "C:\Users\hbayraktepe\PycharmProjects\mongodb_to_sql\venv\lib\site-packages\sqlalchemy\engine\base.py", line 3280, in connect
+    return self._connection_cls(self)
+  File "C:\Users\hbayraktepe\PycharmProjects\mongodb_to_sql\venv\lib\site-packages\sqlalchemy\engine\base.py", line 148, in __init__
+    Connection._handle_dbapi_exception_noconnection(
+  File "C:\Users\hbayraktepe\PycharmProjects\mongodb_to_sql\venv\lib\site-packages\sqlalchemy\engine\base.py", line 2444, in _handle_dbapi_exception_noconnection
+    raise sqlalchemy_exception.with_traceback(exc_info[2]) from e
+  File "C:\Users\hbayraktepe\PycharmProjects\mongodb_to_sql\venv\lib\site-packages\sqlalchemy\engine\base.py", line 146, in __init__
+    self._dbapi_connection = engine.raw_connection()
+  File "C:\Users\hbayraktepe\PycharmProjects\mongodb_to_sql\venv\lib\site-packages\sqlalchemy\engine\base.py", line 3304, in raw_connection
+    return self.pool.connect()
+  File "C:\Users\hbayraktepe\PycharmProjects\mongodb_to_sql\venv\lib\site-packages\sqlalchemy\pool\base.py", line 449, in connect
+    return _ConnectionFairy._checkout(self)
+  File "C:\Users\hbayraktepe\PycharmProjects\mongodb_to_sql\venv\lib\site-packages\sqlalchemy\pool\base.py", line 1263, in _checkout
+    fairy = _ConnectionRecord.checkout(pool)
+  File "C:\Users\hbayraktepe\PycharmProjects\mongodb_to_sql\venv\lib\site-packages\sqlalchemy\pool\base.py", line 712, in checkout
+    rec = pool._do_get()
+  File "C:\Users\hbayraktepe\PycharmProjects\mongodb_to_sql\venv\lib\site-packages\sqlalchemy\pool\impl.py", line 179, in _do_get
+    with util.safe_reraise():
+  File "C:\Users\hbayraktepe\PycharmProjects\mongodb_to_sql\venv\lib\site-packages\sqlalchemy\util\langhelpers.py", line 146, in __exit__
+    raise exc_value.with_traceback(exc_tb)
+  File "C:\Users\hbayraktepe\PycharmProjects\mongodb_to_sql\venv\lib\site-packages\sqlalchemy\pool\impl.py", line 177, in _do_get
+    return self._create_connection()
+  File "C:\Users\hbayraktepe\PycharmProjects\mongodb_to_sql\venv\lib\site-packages\sqlalchemy\pool\base.py", line 390, in _create_connection
+    return _ConnectionRecord(self)
+  File "C:\Users\hbayraktepe\PycharmProjects\mongodb_to_sql\venv\lib\site-packages\sqlalchemy\pool\base.py", line 674, in __init__
+    self.__connect()
+  File "C:\Users\hbayraktepe\PycharmProjects\mongodb_to_sql\venv\lib\site-packages\sqlalchemy\pool\base.py", line 900, in __connect
+    with util.safe_reraise():
+  File "C:\Users\hbayraktepe\PycharmProjects\mongodb_to_sql\venv\lib\site-packages\sqlalchemy\util\langhelpers.py", line 146, in __exit__
+    raise exc_value.with_traceback(exc_tb)
+  File "C:\Users\hbayraktepe\PycharmProjects\mongodb_to_sql\venv\lib\site-packages\sqlalchemy\pool\base.py", line 896, in __connect
+    self.dbapi_connection = connection = pool._invoke_creator(self)
+  File "C:\Users\hbayraktepe\PycharmProjects\mongodb_to_sql\venv\lib\site-packages\sqlalchemy\engine\create.py", line 643, in connect
+    return dialect.connect(*cargs, **cparams)
+  File "C:\Users\hbayraktepe\PycharmProjects\mongodb_to_sql\venv\lib\site-packages\sqlalchemy\engine\default.py", line 617, in connect
+    return self.loaded_dbapi.connect(*cargs, **cparams)
+sqlalchemy.exc.OperationalError: (pyodbc.OperationalError) ('08001', '[08001] [Microsoft][ODBC SQL Server Driver][DBNETLIB]SQL Server yok veya eriþim engellendi. (17) (SQLDriverConnect); [08001] [Microsoft][ODBC SQL Server Driver][DBNETLIB]ConnectionOpen (Connect()). (53)')
+(Background on this error at: https://sqlalche.me/e/20/e3q8)
+2024-05-02 15:55:29,468:ERROR:An error occurred: (psycopg2.ProgrammingError) can't adapt type 'ObjectId'
+[SQL: INSERT INTO deneme123 (_id, ron, entry_date, entry_number, nor) VALUES (%(_id__0)s, %(ron__0)s, %(entry_date__0)s, %(entry_number__0)s, %(nor__0)s), (%(_id__1)s, %(ron__1)s, %(entry_date__1)s, %(entry_number__1)s, %(nor__1)s), (%(_id__2)s, %(ron__2)s, %(entry_date__2)s, %(entry_number__2)s, %(nor__2)s), (%(_id__3)s, %(ron__3)s, %(entry_date__3)s, %(entry_number__3)s, %(nor__3)s)]
+[parameters: {'ron__0': '10', '_id__0': ObjectId('66338354622108163835267a'), 'entry_number__0': 1, 'entry_date__0': '2024-05-02T15:13:08.691549', 'nor__0': None, 'ron__1': '11', '_id__1': ObjectId('6633835b3db3485bab180646'), 'entry_number__1': 2, 'entry_date__1': '2024-05-02T15:13:15.470718', 'nor__1': None, 'ron__2': None, '_id__2': ObjectId('6633836140a97fadaeda88ba'), 'entry_number__2': 3, 'entry_date__2': '2024-05-02T15:13:21.861777', 'nor__2': '12', 'ron__3': None, '_id__3': ObjectId('66338368a755feacb17d6a10'), 'entry_number__3': 4, 'entry_date__3': '2024-05-02T15:13:28.465401', 'nor__3': '13'}]
+(Background on this error at: https://sqlalche.me/e/20/f405)
+2024-05-02 15:58:37,936:INFO:{"message": "Waiting for suitable server to become available", "selector": "Primary()", "operation": "find", "topologyDescription": "<TopologyDescription id: 66338dfd2249c4615e8a1296, topology_type: Single, servers: [<ServerDescription ('192.168.4.44', 27017) server_type: Unknown, rtt: None>]>", "clientId": {"$oid": "66338dfd2249c4615e8a1296"}, "remainingTimeMS": 30}
+2024-05-02 15:58:38,271:ERROR:An error occurred: (psycopg2.ProgrammingError) can't adapt type 'ObjectId'
+[SQL: INSERT INTO deneme123 (_id, ron, entry_date, entry_number, nor) VALUES (%(_id__0)s, %(ron__0)s, %(entry_date__0)s, %(entry_number__0)s, %(nor__0)s), (%(_id__1)s, %(ron__1)s, %(entry_date__1)s, %(entry_number__1)s, %(nor__1)s), (%(_id__2)s, %(ron__2)s, %(entry_date__2)s, %(entry_number__2)s, %(nor__2)s), (%(_id__3)s, %(ron__3)s, %(entry_date__3)s, %(entry_number__3)s, %(nor__3)s)]
+[parameters: {'ron__0': '10', '_id__0': ObjectId('66338354622108163835267a'), 'entry_number__0': 1, 'entry_date__0': '2024-05-02T15:13:08.691549', 'nor__0': None, 'ron__1': '11', '_id__1': ObjectId('6633835b3db3485bab180646'), 'entry_number__1': 2, 'entry_date__1': '2024-05-02T15:13:15.470718', 'nor__1': None, 'ron__2': None, '_id__2': ObjectId('6633836140a97fadaeda88ba'), 'entry_number__2': 3, 'entry_date__2': '2024-05-02T15:13:21.861777', 'nor__2': '12', 'ron__3': None, '_id__3': ObjectId('66338368a755feacb17d6a10'), 'entry_number__3': 4, 'entry_date__3': '2024-05-02T15:13:28.465401', 'nor__3': '13'}]
+(Background on this error at: https://sqlalche.me/e/20/f405)
+2024-05-02 16:00:09,986:INFO:{"message": "Waiting for suitable server to become available", "selector": "Primary()", "operation": "find", "topologyDescription": "<TopologyDescription id: 66338e59b8f153c22e5e6e8e, topology_type: Single, servers: [<ServerDescription ('192.168.4.44', 27017) server_type: Unknown, rtt: None>]>", "clientId": {"$oid": "66338e59b8f153c22e5e6e8e"}, "remainingTimeMS": 30}
+2024-05-02 16:00:10,285:ERROR:An error occurred: (psycopg2.ProgrammingError) can't adapt type 'ObjectId'
+[SQL: INSERT INTO deneme123 (_id, ron, entry_date, entry_number, nor) VALUES (%(_id__0)s, %(ron__0)s, %(entry_date__0)s, %(entry_number__0)s, %(nor__0)s), (%(_id__1)s, %(ron__1)s, %(entry_date__1)s, %(entry_number__1)s, %(nor__1)s), (%(_id__2)s, %(ron__2)s, %(entry_date__2)s, %(entry_number__2)s, %(nor__2)s), (%(_id__3)s, %(ron__3)s, %(entry_date__3)s, %(entry_number__3)s, %(nor__3)s)]
+[parameters: {'nor__0': None, 'entry_number__0': 1, 'ron__0': '10', 'entry_date__0': '2024-05-02T15:13:08.691549', '_id__0': ObjectId('66338354622108163835267a'), 'nor__1': None, 'entry_number__1': 2, 'ron__1': '11', 'entry_date__1': '2024-05-02T15:13:15.470718', '_id__1': ObjectId('6633835b3db3485bab180646'), 'nor__2': '12', 'entry_number__2': 3, 'ron__2': None, 'entry_date__2': '2024-05-02T15:13:21.861777', '_id__2': ObjectId('6633836140a97fadaeda88ba'), 'nor__3': '13', 'entry_number__3': 4, 'ron__3': None, 'entry_date__3': '2024-05-02T15:13:28.465401', '_id__3': ObjectId('66338368a755feacb17d6a10')}]
+(Background on this error at: https://sqlalche.me/e/20/f405)
+2024-05-02 16:00:46,137:INFO:{"message": "Waiting for suitable server to become available", "selector": "Primary()", "operation": "find", "topologyDescription": "<TopologyDescription id: 66338e7e466f4cb418ac1fee, topology_type: Single, servers: [<ServerDescription ('192.168.4.44', 27017) server_type: Unknown, rtt: None>]>", "clientId": {"$oid": "66338e7e466f4cb418ac1fee"}, "remainingTimeMS": 30}
+2024-05-02 16:00:46,475:ERROR:An error occurred: (psycopg2.ProgrammingError) can't adapt type 'ObjectId'
+[SQL: INSERT INTO deneme123 (_id, ron, entry_date, entry_number, nor) VALUES (%(_id__0)s, %(ron__0)s, %(entry_date__0)s, %(entry_number__0)s, %(nor__0)s), (%(_id__1)s, %(ron__1)s, %(entry_date__1)s, %(entry_number__1)s, %(nor__1)s), (%(_id__2)s, %(ron__2)s, %(entry_date__2)s, %(entry_number__2)s, %(nor__2)s), (%(_id__3)s, %(ron__3)s, %(entry_date__3)s, %(entry_number__3)s, %(nor__3)s)]
+[parameters: {'nor__0': None, '_id__0': ObjectId('66338354622108163835267a'), 'entry_date__0': '2024-05-02T15:13:08.691549', 'ron__0': '10', 'entry_number__0': 1, 'nor__1': None, '_id__1': ObjectId('6633835b3db3485bab180646'), 'entry_date__1': '2024-05-02T15:13:15.470718', 'ron__1': '11', 'entry_number__1': 2, 'nor__2': '12', '_id__2': ObjectId('6633836140a97fadaeda88ba'), 'entry_date__2': '2024-05-02T15:13:21.861777', 'ron__2': None, 'entry_number__2': 3, 'nor__3': '13', '_id__3': ObjectId('66338368a755feacb17d6a10'), 'entry_date__3': '2024-05-02T15:13:28.465401', 'ron__3': None, 'entry_number__3': 4}]
+(Background on this error at: https://sqlalche.me/e/20/f405)
+2024-05-02 16:02:47,465:INFO:{"message": "Waiting for suitable server to become available", "selector": "Primary()", "operation": "find", "topologyDescription": "<TopologyDescription id: 66338ef7dda705b6534997d2, topology_type: Single, servers: [<ServerDescription ('192.168.4.44', 27017) server_type: Unknown, rtt: None>]>", "clientId": {"$oid": "66338ef7dda705b6534997d2"}, "remainingTimeMS": 30}
+2024-05-02 16:02:47,891:ERROR:An error occurred: (psycopg2.errors.UndefinedColumn) column "_id" of relation "deneme123" does not exist
+LINE 1: INSERT INTO deneme123 (_id, ron, entry_date, entry_number, n...
+                               ^
+
+[SQL: INSERT INTO deneme123 (_id, ron, entry_date, entry_number, nor) VALUES (%(_id__0)s, %(ron__0)s, %(entry_date__0)s, %(entry_number__0)s, %(nor__0)s), (%(_id__1)s, %(ron__1)s, %(entry_date__1)s, %(entry_number__1)s, %(nor__1)s), (%(_id__2)s, %(ron__2)s, %(entry_date__2)s, %(entry_number__2)s, %(nor__2)s), (%(_id__3)s, %(ron__3)s, %(entry_date__3)s, %(entry_number__3)s, %(nor__3)s)]
+[parameters: {'ron__0': '10', 'nor__0': None, 'entry_number__0': 1, 'entry_date__0': '2024-05-02T15:13:08.691549', '_id__0': '66338354622108163835267a', 'ron__1': '11', 'nor__1': None, 'entry_number__1': 2, 'entry_date__1': '2024-05-02T15:13:15.470718', '_id__1': '6633835b3db3485bab180646', 'ron__2': None, 'nor__2': '12', 'entry_number__2': 3, 'entry_date__2': '2024-05-02T15:13:21.861777', '_id__2': '6633836140a97fadaeda88ba', 'ron__3': None, 'nor__3': '13', 'entry_number__3': 4, 'entry_date__3': '2024-05-02T15:13:28.465401', '_id__3': '66338368a755feacb17d6a10'}]
+(Background on this error at: https://sqlalche.me/e/20/f405)
+2024-05-02 16:04:06,838:INFO:{"message": "Waiting for suitable server to become available", "selector": "Primary()", "operation": "find", "topologyDescription": "<TopologyDescription id: 66338f462ebf4594cfa34877, topology_type: Single, servers: [<ServerDescription ('192.168.4.44', 27017) server_type: Unknown, rtt: None>]>", "clientId": {"$oid": "66338f462ebf4594cfa34877"}, "remainingTimeMS": 30}
+2024-05-02 16:04:06,898:ERROR:An error occurred: name 'datetime' is not defined
+2024-05-02 16:05:10,758:INFO:{"message": "Waiting for suitable server to become available", "selector": "Primary()", "operation": "find", "topologyDescription": "<TopologyDescription id: 66338f86c408b5e37a5d2eef, topology_type: Single, servers: [<ServerDescription ('192.168.4.44', 27017) server_type: Unknown, rtt: None>]>", "clientId": {"$oid": "66338f86c408b5e37a5d2eef"}, "remainingTimeMS": 30}
+2024-05-02 16:05:11,137:ERROR:An error occurred: (psycopg2.ProgrammingError) can't adapt type 'ObjectId'
+[SQL: INSERT INTO deneme123 (_id, ron, entry_date, entry_number, nor) VALUES (%(_id__0)s, %(ron__0)s, %(entry_date__0)s, %(entry_number__0)s, %(nor__0)s), (%(_id__1)s, %(ron__1)s, %(entry_date__1)s, %(entry_number__1)s, %(nor__1)s), (%(_id__2)s, %(ron__2)s, %(entry_date__2)s, %(entry_number__2)s, %(nor__2)s), (%(_id__3)s, %(ron__3)s, %(entry_date__3)s, %(entry_number__3)s, %(nor__3)s)]
+[parameters: {'_id__0': ObjectId('66338354622108163835267a'), 'ron__0': '10', 'entry_date__0': '2024-05-02T15:13:08.691549', 'nor__0': None, 'entry_number__0': 1, '_id__1': ObjectId('6633835b3db3485bab180646'), 'ron__1': '11', 'entry_date__1': '2024-05-02T15:13:15.470718', 'nor__1': None, 'entry_number__1': 2, '_id__2': ObjectId('6633836140a97fadaeda88ba'), 'ron__2': None, 'entry_date__2': '2024-05-02T15:13:21.861777', 'nor__2': '12', 'entry_number__2': 3, '_id__3': ObjectId('66338368a755feacb17d6a10'), 'ron__3': None, 'entry_date__3': '2024-05-02T15:13:28.465401', 'nor__3': '13', 'entry_number__3': 4}]
+(Background on this error at: https://sqlalche.me/e/20/f405)
+2024-05-02 16:06:09,210:INFO:{"message": "Waiting for suitable server to become available", "selector": "Primary()", "operation": "find", "topologyDescription": "<TopologyDescription id: 66338fc1e8a60a58d213c3a2, topology_type: Single, servers: [<ServerDescription ('192.168.4.44', 27017) server_type: Unknown, rtt: None>]>", "clientId": {"$oid": "66338fc1e8a60a58d213c3a2"}, "remainingTimeMS": 30}
+2024-05-02 16:06:09,282:ERROR:An error occurred: name 'datetime' is not defined
+2024-05-02 16:06:42,977:INFO:{"message": "Waiting for suitable server to become available", "selector": "Primary()", "operation": "find", "topologyDescription": "<TopologyDescription id: 66338fe2161352144336151b, topology_type: Single, servers: [<ServerDescription ('192.168.4.44', 27017) server_type: Unknown, rtt: None>]>", "clientId": {"$oid": "66338fe2161352144336151b"}, "remainingTimeMS": 30}
+2024-05-02 16:06:43,338:ERROR:An error occurred: (psycopg2.ProgrammingError) can't adapt type 'ObjectId'
+[SQL: INSERT INTO deneme123 (_id, ron, entry_date, entry_number, nor) VALUES (%(_id__0)s, %(ron__0)s, %(entry_date__0)s, %(entry_number__0)s, %(nor__0)s), (%(_id__1)s, %(ron__1)s, %(entry_date__1)s, %(entry_number__1)s, %(nor__1)s), (%(_id__2)s, %(ron__2)s, %(entry_date__2)s, %(entry_number__2)s, %(nor__2)s), (%(_id__3)s, %(ron__3)s, %(entry_date__3)s, %(entry_number__3)s, %(nor__3)s)]
+[parameters: {'entry_number__0': 1, 'nor__0': None, 'entry_date__0': '2024-05-02T15:13:08.691549', 'ron__0': '10', '_id__0': ObjectId('66338354622108163835267a'), 'entry_number__1': 2, 'nor__1': None, 'entry_date__1': '2024-05-02T15:13:15.470718', 'ron__1': '11', '_id__1': ObjectId('6633835b3db3485bab180646'), 'entry_number__2': 3, 'nor__2': '12', 'entry_date__2': '2024-05-02T15:13:21.861777', 'ron__2': None, '_id__2': ObjectId('6633836140a97fadaeda88ba'), 'entry_number__3': 4, 'nor__3': '13', 'entry_date__3': '2024-05-02T15:13:28.465401', 'ron__3': None, '_id__3': ObjectId('66338368a755feacb17d6a10')}]
+(Background on this error at: https://sqlalche.me/e/20/f405)
+2024-05-02 16:07:18,389:INFO:{"message": "Waiting for suitable server to become available", "selector": "Primary()", "operation": "find", "topologyDescription": "<TopologyDescription id: 663390064586c60d28883f90, topology_type: Single, servers: [<ServerDescription ('192.168.4.44', 27017) server_type: Unknown, rtt: None>]>", "clientId": {"$oid": "663390064586c60d28883f90"}, "remainingTimeMS": 30}
+2024-05-02 16:07:18,468:ERROR:An error occurred: name 'datetime' is not defined
+2024-05-02 16:08:12,611:INFO:{"message": "Waiting for suitable server to become available", "selector": "Primary()", "operation": "find", "topologyDescription": "<TopologyDescription id: 6633903cc7be1e9bf6b0a539, topology_type: Single, servers: [<ServerDescription ('192.168.4.44', 27017) server_type: Unknown, rtt: None>]>", "clientId": {"$oid": "6633903cc7be1e9bf6b0a539"}, "remainingTimeMS": 30}
+2024-05-02 16:08:13,104:INFO:Data successfully transferred to PostgreSQL.
+2024-05-02 16:10:39,351:INFO:{"message": "Waiting for suitable server to become available", "selector": "Primary()", "operation": "find", "topologyDescription": "<TopologyDescription id: 663390cf4005f896531a87e7, topology_type: Single, servers: [<ServerDescription ('192.168.4.44', 27017) server_type: Unknown, rtt: None>]>", "clientId": {"$oid": "663390cf4005f896531a87e7"}, "remainingTimeMS": 30}
+2024-05-02 16:10:57,873:ERROR:An error occurred: (pyodbc.OperationalError) ('08001', '[08001] [Microsoft][ODBC SQL Server Driver][DBNETLIB]SQL Server yok veya eriþim engellendi. (17) (SQLDriverConnect); [08001] [Microsoft][ODBC SQL Server Driver][DBNETLIB]ConnectionOpen (Connect()). (53)')
+(Background on this error at: https://sqlalche.me/e/20/e3q8)
+2024-05-02 16:12:02,213:INFO:{"message": "Waiting for suitable server to become available", "selector": "Primary()", "operation": "find", "topologyDescription": "<TopologyDescription id: 6633912292e8c444e2cd207c, topology_type: Single, servers: [<ServerDescription ('192.168.4.44', 27017) server_type: Unknown, rtt: None>]>", "clientId": {"$oid": "6633912292e8c444e2cd207c"}, "remainingTimeMS": 30}
+2024-05-02 16:12:02,560:ERROR:An error occurred: (psycopg2.ProgrammingError) can't adapt type 'ObjectId'
+[SQL: INSERT INTO deneme321 (_id, ron, entry_date, entry_number, nor) VALUES (%(_id__0)s, %(ron__0)s, %(entry_date__0)s, %(entry_number__0)s, %(nor__0)s), (%(_id__1)s, %(ron__1)s, %(entry_date__1)s, %(entry_number__1)s, %(nor__1)s), (%(_id__2)s, %(ron__2)s, %(entry_date__2)s, %(entry_number__2)s, %(nor__2)s), (%(_id__3)s, %(ron__3)s, %(entry_date__3)s, %(entry_number__3)s, %(nor__3)s)]
+[parameters: {'nor__0': None, 'entry_number__0': 1, 'ron__0': '10', 'entry_date__0': '2024-05-02T15:13:08.691549', '_id__0': ObjectId('66338354622108163835267a'), 'nor__1': None, 'entry_number__1': 2, 'ron__1': '11', 'entry_date__1': '2024-05-02T15:13:15.470718', '_id__1': ObjectId('6633835b3db3485bab180646'), 'nor__2': '12', 'entry_number__2': 3, 'ron__2': None, 'entry_date__2': '2024-05-02T15:13:21.861777', '_id__2': ObjectId('6633836140a97fadaeda88ba'), 'nor__3': '13', 'entry_number__3': 4, 'ron__3': None, 'entry_date__3': '2024-05-02T15:13:28.465401', '_id__3': ObjectId('66338368a755feacb17d6a10')}]
+(Background on this error at: https://sqlalche.me/e/20/f405)
+2024-05-02 16:12:55,389:INFO:{"message": "Waiting for suitable server to become available", "selector": "Primary()", "operation": "find", "topologyDescription": "<TopologyDescription id: 663391576c21bec3a8d9128f, topology_type: Single, servers: [<ServerDescription ('192.168.4.44', 27017) server_type: Unknown, rtt: None>]>", "clientId": {"$oid": "663391576c21bec3a8d9128f"}, "remainingTimeMS": 30}
+2024-05-02 16:12:55,708:INFO:Data successfully transferred to PostgreSQL.
+2024-05-02 16:14:46,476:INFO:{"message": "Waiting for suitable server to become available", "selector": "Primary()", "operation": "find", "topologyDescription": "<TopologyDescription id: 663391c6488aaff7ae87d57f, topology_type: Single, servers: [<ServerDescription ('192.168.4.44', 27017) server_type: Unknown, rtt: None>]>", "clientId": {"$oid": "663391c6488aaff7ae87d57f"}, "remainingTimeMS": 30}
+2024-05-02 16:14:46,898:INFO:Data successfully transferred to PostgreSQL.
+2024-05-02 16:15:46,906:INFO:{"message": "Waiting for suitable server to become available", "selector": "Primary()", "operation": "find", "topologyDescription": "<TopologyDescription id: 66339202488aaff7ae87d580, topology_type: Single, servers: [<ServerDescription ('192.168.4.44', 27017) server_type: Unknown, rtt: None>]>", "clientId": {"$oid": "66339202488aaff7ae87d580"}, "remainingTimeMS": 30}
+2024-05-02 16:15:47,223:INFO:Data successfully transferred to PostgreSQL.
+2024-05-02 16:16:47,228:INFO:{"message": "Waiting for suitable server to become available", "selector": "Primary()", "operation": "find", "topologyDescription": "<TopologyDescription id: 6633923f488aaff7ae87d581, topology_type: Single, servers: [<ServerDescription ('192.168.4.44', 27017) server_type: Unknown, rtt: None>]>", "clientId": {"$oid": "6633923f488aaff7ae87d581"}, "remainingTimeMS": 30}
+2024-05-02 16:16:47,564:INFO:Data successfully transferred to PostgreSQL.
